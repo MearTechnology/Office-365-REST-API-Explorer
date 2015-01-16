@@ -1,0 +1,156 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Office-365-rest-api-explorer by OfficeDev</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Office-365-rest-api-explorer</h1>
+        <p>This project is a Windows Store app that uses the Office 365 APIs client libraries to get access tokens. The app then uses the tokens with the REST API in SharePoint to show you how to build HTTP requests that perform CRUD operations on lists, list items, and files.</p>
+
+        <p class="view"><a href="https://github.com/OfficeDev/Office-365-REST-API-Explorer">View the Project on GitHub <small>OfficeDev/Office-365-REST-API-Explorer</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/OfficeDev/Office-365-REST-API-Explorer/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/OfficeDev/Office-365-REST-API-Explorer/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/OfficeDev/Office-365-REST-API-Explorer">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h1>
+<a id="office-365-rest-api-explorer-for-sites" class="anchor" href="#office-365-rest-api-explorer-for-sites" aria-hidden="true"><span class="octicon octicon-link"></span></a>Office 365 REST API Explorer for Sites</h1>
+
+<h2>
+<a id="overview" class="anchor" href="#overview" aria-hidden="true"><span class="octicon octicon-link"></span></a>Overview</h2>
+
+<p>This app is an example that shows SharePoint developers how to perform HTTP requests to some of the REST endpoints in SharePoint sites hosted on Office 365.</p>
+
+<p>The key goal of this project is to show SharePoint developers how they can use the tokens obtained with the Office 365 APIs to access the REST API in SharePoint.  Specifically, the app shows how to:</p>
+
+<ul>
+<li>Request an access token</li>
+<li>Get a new access token with a refresh token</li>
+<li>Clear the tokens in the cache</li>
+<li>Sign out the user</li>
+<li>Manage exceptions related to tokens</li>
+</ul>
+
+<p>Visualizing and inspecting how the Office 365 APIs behave at the REST protocol level can be really helpful for learning and understanding them. This project uses the Office 365 APIs to get an access token that can be used with the REST endpoints in SharePoint. You can construct basic CRUD operations on lists, list items, and files viewing both the HTTP request and response. You can try out the REST endpoints that you need for your own apps and websites. The app has controls that let you modify the default CRUD operations.</p>
+
+<p>You can perform CRUD operations on the following items in a SharePoint site:</p>
+
+<ul>
+<li>Lists</li>
+<li>List items</li>
+<li>Files</li>
+</ul>
+
+<h2>
+<a id="prerequisites-and-configuration" class="anchor" href="#prerequisites-and-configuration" aria-hidden="true"><span class="octicon octicon-link"></span></a>Prerequisites and Configuration</h2>
+
+<p>This sample requires the following:</p>
+
+<ul>
+<li>Visual Studio 2013 with Update 3.</li>
+<li>
+<a href="https://visualstudiogallery.msdn.microsoft.com/a15b85e6-69a7-4fdf-adda-a38066bb5155">Office 365 API Tools version 1.3.41104.1</a>.</li>
+<li>An <a href="https://portal.office.com/Signup/Signup.aspx?OfferId=6881A1CB-F4EB-4db3-9F18-388898DAF510&amp;DL=DEVELOPERPACK&amp;ali=1">Office 365 developer site</a>.</li>
+</ul>
+
+<h3>
+<a id="configure-the-sample" class="anchor" href="#configure-the-sample" aria-hidden="true"><span class="octicon octicon-link"></span></a>Configure the sample</h3>
+
+<p>Follow these steps to configure the sample.</p>
+
+<ol>
+<li>Open the O365-REST-API-Explorer.sln file using Visual Studio 2013.</li>
+<li>Register and configure the app to consume Office 365 services (detailed below).</li>
+<li>In the Solution Explorer window, choose Office365RESTAPIforSites project -&gt; Add -&gt; Connected Service. You must install the Office 365 API tools to see this menu option.</li>
+<li>In the <strong>Services Manager</strong> dialog box, choose <strong>Office 365</strong> and Register your app.</li>
+<li>On the sign-in dialog box, enter the username and password for your Office 365 tenant. 
+
+<ul>
+<li>We recommend that you use your Office 365 Developer Site. Often, this user name will follow the pattern &lt;username&gt;@<em>&lt;tenant&gt;</em>.onmicrosoft.com. If you do not have a developer site, you can get a free developer site as part of your MSDN benefits or sign up for a free trial. Be aware that the user must be an tenant admin user—but for tenants created as part of an Office 365 developer site, this is likely to be the case already. Also developer accounts are usually limited to one sign-in.</li>
+<li>After you're signed in, you will see a list of all the services. Initially, no permissions are selected. </li>
+</ul>
+</li>
+<li>To register for the services used in this sample, choose the following permissions:
+
+<ul>
+<li>Sites 
+
+<ul>
+<li>Create or delete items and lists in all site collections</li>
+<li>Edit or delete items in all site collections</li>
+<li>Read items in all site collections</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>After clicking OK in the Services Manager dialog box, assemblies for connecting to the Office 365 REST API will be added to your project.</li>
+</ol>
+
+<h2>
+<a id="build" class="anchor" href="#build" aria-hidden="true"><span class="octicon octicon-link"></span></a>Build</h2>
+
+<ol>
+<li>Open the solution in Visual Studio and press F5.</li>
+<li>In the initial screen, provide the URL of your SharePoint site.</li>
+<li>Sign in with your organizational account to Office 365.</li>
+</ol>
+
+<h2>
+<a id="project-components-of-interest" class="anchor" href="#project-components-of-interest" aria-hidden="true"><span class="octicon octicon-link"></span></a>Project Components of Interest</h2>
+
+<p><strong>Pages</strong></p>
+
+<ul>
+<li>ConfigureAppPage</li>
+<li>ItemsPage</li>
+<li>SplitPage</li>
+</ul>
+
+<p><strong>Data Access Classes and Files</strong></p>
+
+<ul>
+<li>DataSource</li>
+<li>DataGroup</li>
+<li>DataItem</li>
+<li>RequestItem</li>
+<li>ResponseItem</li>
+<li>InitialData.json</li>
+</ul>
+
+<h2>
+<a id="troubleshooting" class="anchor" href="#troubleshooting" aria-hidden="true"><span class="octicon octicon-link"></span></a>Troubleshooting</h2>
+
+<p>You may run into an authentication error after deploying and running if apps do not have the ability to access account information in the <a href="http://www.microsoft.com/security/online-privacy/windows.aspx">Windows Privacy Settings</a> menu. Set <strong>Let my apps access my name, picture, and other account info</strong> to <strong>On</strong>.</p>
+
+<p>Known issues</p>
+
+<ul>
+<li>You need to provide a site that is at the root of the web application. For example: the https://<em>&lt;tenant&gt;</em>.sharepoint.com site. The sign in process fails with non-root site collections.</li>
+</ul>
+
+<p>Copyright (c) Microsoft. All rights reserved.</p>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/OfficeDev">OfficeDev</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>
